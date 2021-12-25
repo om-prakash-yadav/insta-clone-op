@@ -11,7 +11,7 @@ function signIn({ providers }) {
           src="https://raw.githubusercontent.com/om-prakash-yadav/links/main/instagram-logo.png"
           alt=""
         />
-        <p className="font-xs italic">
+        <p className="text-xs italic">
           Note : This is a clone of instagram created by OM PRAKASH YADAV
         </p>
         <div className="mt-40 ">
