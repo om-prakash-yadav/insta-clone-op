@@ -6,8 +6,10 @@ import {
   HeartIcon,
   PaperAirplaneIcon,
 } from "@heroicons/react/outline";
+import { useSession } from "next-auth/react";
 
 function Post({ id, username, userImg, img, caption }) {
+  const { data: session } = useSession();
   return (
     <div className="bg-white my-7 border rounded-sm">
       {/* header  */}
@@ -22,17 +24,19 @@ function Post({ id, username, userImg, img, caption }) {
       </div>
 
       {/* img  */}
-      <img src={img}  className="object-cover w-full max-h-screen " alt="" />
+      <img src={img} className="object-cover w-full max-h-screen " alt="" />
 
       {/* buttons */}
-      <div className="flex justify-between px-4 pt-4">
-        <div className="flex space-x-4">
-          <HeartIcon className="Btn" />
-          <ChatIcon className="Btn" />
-          <PaperAirplaneIcon className="Btn rotate-45" />
+      {session && (
+        <div className="flex justify-between px-4 pt-4">
+          <div className="flex space-x-4">
+            <HeartIcon className="Btn" />
+            <ChatIcon className="Btn" />
+            <PaperAirplaneIcon className="Btn rotate-45" />
+          </div>
+          <BookmarkIcon className="Btn" />
         </div>
-        <BookmarkIcon className="Btn" />
-      </div>
+      )}
 
       {/* caption  */}
       <p className="p-5 truncate">
@@ -43,12 +47,17 @@ function Post({ id, username, userImg, img, caption }) {
       {/* comments */}
 
       {/* input box */}
-      <form className="flex items-center p-4">
+      {session && (
+        <form className="flex items-center p-4">
           <EmojiHappyIcon className="h-7" />
-          <input type="text" placeholder="Add a Comment ..."
-          className="border-none flex-1 focus:ring-0 outline-none" />
+          <input
+            type="text"
+            placeholder="Add a Comment ..."
+            className="border-none flex-1 focus:ring-0 outline-none"
+          />
           <button className="font-semibold text-blue-400">Post</button>
-      </form>
+        </form>
+      )}
     </div>
   );
 }
