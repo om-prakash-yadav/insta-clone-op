@@ -6,6 +6,7 @@ import {
   PlusCircleIcon,
   SearchIcon,
   UserGroupIcon,
+  UserIcon,
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -74,7 +75,7 @@ function Header() {
               />
             </>
           ) : (
-            <button onClick={signIn}>sign in</button>
+            <UserIcon onClick={signIn}  className="  h-8 md:hidden cursor-pointer flex-shrink-0 " />
           )}
         </div>
       </div>
