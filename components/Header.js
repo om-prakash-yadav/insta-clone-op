@@ -64,7 +64,7 @@ function Header() {
                   3
                 </div>
               </div>
-              <PlusCircleIcon onClick={()=>setOpen(true)} className="navbtn h-6  cursor-pointer flex-shrink-0" />
+              <PlusCircleIcon onClick={()=>setOpen(true)} className="navBtn h-6  cursor-pointer flex-shrink-0" />
               <UserGroupIcon className="navBtn hidden md:inline-flex" />
               <HeartIcon className="navBtn hidden md:inline-flex" />
               {/* profile picture with login and logout functionality */}
@@ -75,8 +75,8 @@ function Header() {
               />
             </>
           ) : (<>
+            <p onClick={signIn} className=" text-sm flex text-center min-w-fit  md:text-xl font-semibold cursor-pointer">Sign In</p>
             <UserCircleIcon onClick={signIn}  className=" md:hidden h-8 cursor-pointer flex-shrink-0 text-gray-600" />
-            <p onClick={signIn} className="hidden md:flex text-xl font-semibold cursor-pointer">Sign In</p>
             </>
           )}
         </div>
