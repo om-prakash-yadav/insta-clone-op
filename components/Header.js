@@ -5,10 +5,10 @@ import {
   PaperAirplaneIcon,
   PlusCircleIcon,
   SearchIcon,
+  UserCircleIcon,
   UserGroupIcon,
-  UserIcon,
 } from "@heroicons/react/outline";
-import { HomeIcon } from "@heroicons/react/solid";
+import { HomeIcon  } from "@heroicons/react/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
@@ -53,12 +53,12 @@ function Header() {
         {/* right */}
         <div className="flex items-center justify-end space-x-4 ml-6">
           <HomeIcon onClick={() => router.push('/')} className="navBtn hidden md:inline-flex" />
-          <MenuIcon className="  h-8 md:hidden cursor-pointer flex-shrink-0 " />
+          
 
           {session ? (
             <>
               {" "}
-              <div className="navBtn hidden md:inline-flex relative">
+              <div className="navBtn relative">
                 <PaperAirplaneIcon className="navBtn rotate-45" />
                 <div className="absolute  bg-red-500 rounded-full -top-1 -right-1 flex items-center text-xs w-4 h-4 justify-center animate-pulse text-white">
                   3
@@ -74,8 +74,10 @@ function Header() {
                 className="rounded-full h-10 w-10 cursor-pointer object-center object-cover"
               />
             </>
-          ) : (
-            <UserIcon onClick={signIn}  className="  h-8 md:hidden cursor-pointer flex-shrink-0 " />
+          ) : (<>
+            <UserCircleIcon onClick={signIn}  className=" md:hidden h-8 cursor-pointer flex-shrink-0 text-gray-600" />
+            <p onClick={signIn} className="hidden md:flex text-xl font-semibold cursor-pointer">Sign In</p>
+            </>
           )}
         </div>
       </div>

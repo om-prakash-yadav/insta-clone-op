@@ -5,26 +5,30 @@ function signIn({ providers }) {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen py-2 -mt-32 px-14 text-center">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 md:-mt-32 -mt-20 px-14 text-center">
         <img
           className="w-80"
           src="https://raw.githubusercontent.com/om-prakash-yadav/links/main/instagram-logo.png"
           alt=""
         />
-        <p className="text-xs italic">
-          Note : This is a clone of instagram created by OM PRAKASH YADAV
+        <p className="text-xs md:text-sm italic text-gray-400">
+          Sign up to see photos and videos from your friends
         </p>
         <div className="mt-40 ">
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
               <button
-                className="p-3 bg-blue-500 text-white rounded-lg"
+                className="p-1 px-3 md:py-3 bg-blue-500 text-white rounded-full"
                 onClick={() =>
                   SignIntoProvider(provider.id, { callbackUrl: "/" })
                 }
               >
                 Sign in with {provider.name}
               </button>
+              <div className="absolute bottom-4">
+                <p className="text-xs text-gray-400">from</p>
+                <p className="text-sm font-bold">OM PRAKASH YADAV</p>
+              </div>
             </div>
           ))}
         </div>
